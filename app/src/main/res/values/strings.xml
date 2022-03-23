@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">My Social Network Project</string>
+    <string name="app_name">Caffeine Club</string>
+    <string name="login">Login</string>
+    <string name="new_account">New Account</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 </resources>
