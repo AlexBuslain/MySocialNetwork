@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161773645941",
+    "project_id": "caffeine-club",
+    "storage_bucket": "caffeine-club.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161773645941:android:4928a84a519e6493fc083c",
+        "android_client_info": {
+          "package_name": "com.example.mysocialnetworkproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161773645941-l2136ka34j4d243evpnvm8ngarh0d0q7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJAg5oooXOBexAf9B7ri22PxfGRO9P4Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161773645941-l2136ka34j4d243evpnvm8ngarh0d0q7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
