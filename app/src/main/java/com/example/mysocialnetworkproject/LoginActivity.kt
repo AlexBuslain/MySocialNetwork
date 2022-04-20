@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val loginButton: Button = findViewById(R.id.login_button)
+        val registerButton: Button = findViewById(R.id.register_button)
         val emailInput: EditText = findViewById(R.id.email_Input)
         val pwdInput: EditText = findViewById(R.id.pwd_Input)
 
@@ -67,6 +68,11 @@ class LoginActivity : AppCompatActivity() {
                         }
                 }
             }
+        }
+
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
