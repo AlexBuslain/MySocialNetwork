@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Caffeine Club</string>
-    <string name="login">Login</string>
-    <string name="new_account">New Account</string>
+    <string name="login">Log in</string>
+    <string name="register">Register</string>
     <string name="email">email</string>
     <string name="password">password</string>
+    <string name="sign_up">Sign up</string>
 </resources>
