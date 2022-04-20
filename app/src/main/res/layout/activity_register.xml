@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="236dp"
-                android:src="@drawable/logo"
+                android:src="@drawable/logo_round"
                 app:layout_constraintBottom_toTopOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
