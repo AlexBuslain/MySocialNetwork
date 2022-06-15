@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySocialNetworkProject">
         <activity
+            android:name=".AddPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
