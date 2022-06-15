@@ -5,4 +5,8 @@
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="sign_up">Sign up</string>
+    <string name="search">search</string>
+    <string name="post">post</string>
+    <string name="write_something">write something...</string>
+    <string name="new_post_button">Add new post</string>
 </resources>
