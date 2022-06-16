@@ -24,25 +24,14 @@ class AddPostActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_post)
 
         val db = Firebase.firestore
-        val user = Firebase.auth.currentUser
-        var firstname = ""
-        var lastname = ""
-
-        db.collection("users").whereEqualTo("uid", user?.uid).get()
-            .addOnSuccessListener { document ->
-                firstname = document.documents[0].get("firstname").toString()
-                lastname = document.documents[0].get("lastname").toString()
-            }
-            .addOnFailureListener { exception ->
-                Log.d("TAG", "Error getting documents: ", exception)
-            }
+        val uid = Firebase.auth.currentUser?.uid
 
         val submitButton: Button = findViewById(R.id.submit_post_button)
         submitButton.setOnClickListener {
             val content = findViewById<android.widget.EditText>(R.id.new_post_input).text.toString()
             val post = hashMapOf(
                 "content" to content,
-                "author" to "$firstname $lastname",
+                "uid" to uid,
                 "date" to FieldValue.serverTimestamp()
             )
             db.collection("posts")
