@@ -19,4 +19,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rutrum urna laoreet ultrices facilisis. Nulla viverra malesuada ultricies. Pellentesque aliquet ligula vitae urna cursus pretium. Nullam id nibh felis. Cras purus tellus, lacinia nec faucibus id, ornare vitae magna. Ut vestibulum, nisi a congue viverra, ex eros tristique ligula, sed.</string>
 </resources>

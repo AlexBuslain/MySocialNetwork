@@ -20,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
         val emailInput: EditText = findViewById(R.id.email_Input)
         val pwdInput: EditText = findViewById(R.id.pwd_Input)
 
+        //val bundle: Bundle? = intent.extras;
+        //var registeredEmail: String? = bundle.getString("email")
             loginButton.setOnClickListener {
             when {
                 TextUtils.isEmpty(emailInput.text.toString().trim { it <= ' ' }) -> {
