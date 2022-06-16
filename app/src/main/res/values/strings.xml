@@ -2,11 +2,21 @@
     <string name="app_name">Caffeine Club</string>
     <string name="login">Log in</string>
     <string name="register">Register</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="sign_up">Sign up</string>
-    <string name="search">search</string>
-    <string name="post">post</string>
-    <string name="write_something">write something...</string>
+    <string name="search">Search</string>
+    <string name="post">Post</string>
+    <string name="write_something">Write something…</string>
     <string name="new_post_button">Add new post</string>
+    <string name="add_picture">Add picture</string>
+    <string name="title_activity_login2">LoginActivity2</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
