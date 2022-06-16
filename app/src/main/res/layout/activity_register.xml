@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:id="@+id/login_fields"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="236dp"
+                android:layout_height="240dp"
                 android:src="@drawable/logo_round"
                 app:layout_constraintBottom_toTopOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,7 @@
                 android:autofillHints="@string/email"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
+                android:layout_marginTop="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,8 +62,9 @@
             <Button
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:text="@string/sign_up"
+                android:layout_marginTop="20dp"
                 app:backgroundTint="#3F51B5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

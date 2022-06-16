@@ -24,20 +24,25 @@
         android:layout_marginBottom="50dp"
         android:contentDescription="@string/new_post_button"
         android:src="@drawable/ic_add_light"
-        app:backgroundTint="#2196F3"
+        app:backgroundTint="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ListView
-        android:id="@+id/postListID"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
-    </ListView>
-
-
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+        <LinearLayout
+            android:id="@+id/post_iterator"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:dividerPadding="10dp">
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
