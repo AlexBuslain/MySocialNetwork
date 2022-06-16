@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add_post.*
@@ -29,30 +30,35 @@ class AddPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_post)
 
-        val user = Firebase.auth.currentUser
-        user?.let {
-            val email = user.email
-
-            val uid = user.uid
-        }
-
         val db = Firebase.firestore
+        val user = Firebase.auth.currentUser
+        var firstname = ""
+        var lastname = ""
+
+        db.collection("users").whereEqualTo("uid", user?.uid).get()
+            .addOnSuccessListener { document ->
+                firstname = document.documents[0].get("firstname").toString()
+                lastname = document.documents[0].get("lastname").toString()
+            }
+            .addOnFailureListener { exception ->
+                Log.d("TAG", "Error getting documents: ", exception)
+            }
 
         val submitButton: Button = findViewById(R.id.submit_post_button)
         submitButton.setOnClickListener {
             val content = findViewById<android.widget.EditText>(R.id.new_post_input).text.toString()
             val post = hashMapOf(
                 "content" to content,
-                "author" to "@" + user?.email?.takeWhile{ it != '@' },
+                "author" to "$firstname $lastname",
                 "date" to FieldValue.serverTimestamp()
             )
             db.collection("posts")
                 .add(post)
                 .addOnSuccessListener { documentReference ->
-                    println("DocumentSnapshot added with ID: ${documentReference.id}")
+                    Log.d("TAG","DocumentSnapshot added with ID: ${documentReference.id}")
                 }
                 .addOnFailureListener { e ->
-                    println("Error adding document: $e")
+                    Log.w("TAG","Error adding document: $e")
                 }
             Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show()
             intent = Intent(this, MainActivity::class.java)
