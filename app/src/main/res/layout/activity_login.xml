@@ -26,10 +26,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:src="@drawable/logo_round"/>
+                android:src="@drawable/logo_round"
+                android:contentDescription="Caffeine" />
 
             <EditText
-                android:id="@+id/email_Input"
+                android:id="@+id/email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/email"
@@ -38,7 +39,7 @@
                 android:layout_marginTop="40dp"/>
 
             <EditText
-                android:id="@+id/pwd_Input"
+                android:id="@+id/pwd_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
