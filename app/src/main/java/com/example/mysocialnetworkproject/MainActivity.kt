@@ -25,30 +25,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Button to add post
         val newPostButton = findViewById<FloatingActionButton>(R.id.newPost)
         newPostButton.setOnClickListener {
             val intent = Intent(this, AddPostActivity::class.java)
             startActivity(intent)
         }
 
+        // Instantiating Firebase
         val db = Firebase.firestore
 
+        // ScrollView binding to display posts
         val postsList = findViewById<LinearLayout>(R.id.post_iterator)
+
+        // Posts and users collection instantiation
         val postCollection = db.collection("posts")
         val usersCollection = db.collection("users")
 
+        // Query to get all posts
         postCollection.orderBy("date", Query.Direction.DESCENDING).get()
             .addOnSuccessListener { result ->
+                // For each post, get the user and content
                 for (document in result) {
+                    // One LinearLayout per post
                     val post = LinearLayout(this)
                     post.orientation = LinearLayout.VERTICAL
                     post.setPadding(0, 10, 0, 40)
-
+                        // TextView to display post author
                         val postAuthor = TextView(this)
+                        // Get uid from post attributes
                         val uid = document.getString("uid")
+                        // Get user from users collection with uid
                         usersCollection.whereEqualTo("uid", uid).get()
                             .addOnSuccessListener { result ->
                                 for (document in result) {
+                                    // Set author name from user attributes
                                     postAuthor.text = document.getString("firstname") + " " + document.getString("lastname")
                                 }
                             }
@@ -56,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                                 Log.w("TAG", "Error getting user's name and lastname: ", exception)
                             }
                         postAuthor.setTextColor(Color.BLACK)
-
+                        // Set post content from post attributes
                         val postContent = TextView(this)
                         postContent.text = document.get("content").toString()
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -64,9 +75,11 @@ class MainActivity : AppCompatActivity() {
                                 postContent.justificationMode = JUSTIFICATION_MODE_INTER_WORD
                             }
                         }
+                        // Add Author TextView to LinearLayout
                         post.addView(postAuthor)
+                        // Add Content TextView to LinearLayout
                         post.addView(postContent)
-
+                    // Add LinearLayout to ScrollView
                     postsList.addView(post)
                 }
             }
