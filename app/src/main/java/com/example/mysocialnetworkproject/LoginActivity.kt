@@ -21,11 +21,11 @@ class LoginActivity : AppCompatActivity() {
         val pwdInput: EditText = findViewById(R.id.pwd_input)
 
         val bundle: Bundle? = intent.extras;
-        val registeredEmail: String? = bundle?.getString("email").toString()
+        val newlyRegisteredEmail: String? = bundle?.getString("email").toString()
 
-        if(registeredEmail != "null") {
-            Log.d("LoginActivity", "Email is $registeredEmail")
-            emailInput.setText(registeredEmail)
+        if(newlyRegisteredEmail != "null") {
+            Log.d("LoginActivity", "Email is $newlyRegisteredEmail")
+            emailInput.setText(newlyRegisteredEmail)
         }
 
         loginButton.setOnClickListener {
@@ -66,10 +66,10 @@ class LoginActivity : AppCompatActivity() {
                             intent.flags =
                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             intent.putExtra(
-                                "user_id",
+                                "uid",
                                 FirebaseAuth.getInstance().currentUser!!.uid
                             )
-                            intent.putExtra("email_id", email)
+                            intent.putExtra("email", email)
                             startActivity(intent)
                             finish()
                         }
