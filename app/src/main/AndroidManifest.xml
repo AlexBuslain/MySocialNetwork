@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySocialNetworkProject">
         <activity
+            android:name=".SearchResultsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserFeedActivity"
             android:exported="false" />
         <activity
