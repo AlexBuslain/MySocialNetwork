@@ -132,29 +132,25 @@ class MainActivity : AppCompatActivity() {
             }
 
         // Search view
-        /*val searchView = findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view)
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        val searchView = findViewById<android.widget.SearchView>(R.id.search_view)
+        searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    usersCollection.whereArrayContainsAny("firstname", query.split(' ')).get()
-                        .addOnSuccessListener { result ->
-                            postsList.removeAllViews()
-
-                            intent = Intent(this@MainActivity, UserFeedActivity::class.java)
-                            intent.putExtra("query", query)
-                            startActivity(intent)
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.w("TAG", "Error getting users: $exception")
-                        }
+                    intent = Intent(this@MainActivity, SearchResultsActivity::class.java)
+                    intent.putExtra("query", query)
+                    startActivity(intent)
                 }
                 return false
             }
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-        })*/
+        })
 
-
+        @Override
+        fun onResume() {
+            super.onResume();
+            this.onCreate(null);
+        }
     }
 }
