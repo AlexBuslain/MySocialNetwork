@@ -7,7 +7,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -17,16 +16,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -41,9 +37,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddPostActivity::class.java)
             startActivity(intent)
         }
-
-        var auth = Firebase.auth
-        var token = auth.getAccessToken(true)
 
         // Instantiating Firebase
         val db = Firebase.firestore
@@ -94,11 +87,11 @@ class MainActivity : AppCompatActivity() {
                         // Get image from post attributes
                         image.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
                         val storage = FirebaseStorage.getInstance()
-                        val storageReference = (document.getString("imageUri"))
+                        storage.reference.child("myImages/" + document.getString("imageId")).downloadUrl
+                            .addOnSuccessListener { uri ->
+                            Glide.with(this).load(uri).into(image)
+                        }
                         //image.text = storageReference
-                        /*Glide.with(this)
-                            .load(url)
-                            .into(image)*/
                         val like = Button(this)
                         like.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
                         like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like, 0, 0, 0)

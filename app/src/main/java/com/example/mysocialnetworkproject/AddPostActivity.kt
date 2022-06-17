@@ -2,20 +2,20 @@ package com.example.mysocialnetworkproject
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import android.util.Log
-import android.widget.ImageView
-import android.widget.Toast
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
@@ -54,21 +54,27 @@ class AddPostActivity : AppCompatActivity() {
                 "content" to content,
                 "uid" to uid,
                 "likes" to 0,
-                "imageUri" to imageId,
+                "imageId" to imageId,
                 "date" to FieldValue.serverTimestamp()
             )
-            db.collection("posts")
-                .add(post)
-                .addOnSuccessListener { documentReference ->
-                    Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w("TAG", "Error adding document: $e")
-                }
+            if (content.isEmpty() && imageId.isEmpty()) {
+                Toast.makeText(this, "Please enter text and/or upload image", Toast.LENGTH_LONG).show()
+            } else {
+                db.collection("posts")
+                    .add(post)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("TAG", "Error adding document: $e")
+                    }
 
-            Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show()
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+                Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show()
+                intent = Intent(this, MainActivity::class.java)
+                finish()
+                startActivity(intent)
+                finish()
+            }
         }
 
     }
@@ -106,9 +112,7 @@ class AddPostActivity : AppCompatActivity() {
             ref?.putFile(filePath!!)
             imageId
         } else {
-            Toast.makeText(this, "Please Upload an Image", Toast.LENGTH_SHORT).show()
             ""
         }
     }
-
 }
