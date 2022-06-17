@@ -21,20 +21,10 @@
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_users" />
-        <ScrollView
-            android:id="@+id/scr"
+        <ListView
+            android:id="@+id/user_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view2">
-            <ListView
-                android:id="@+id/user_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </ListView>
-        </ScrollView>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 
