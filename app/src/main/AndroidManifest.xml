@@ -12,24 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySocialNetworkProject">
         <activity
+            android:name=".UserFeedActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddPostActivity"
             android:exported="false" />
-        <activity
-            android:name=".FirebaseStorageManager"
-            android:exported="false" />
-        <activity
-            android:name=".ImageStorage"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_login2" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
