@@ -18,13 +18,12 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_add_post.*
 import java.io.IOException
 import java.util.*
 
 class AddPostActivity : AppCompatActivity() {
-    ////// Variables pour l'ajout d'une image au Storage ////////
-    val PICK_IMAGE_REQUEST = 71
+    // Variables pour l'ajout d'une image au Storage
+    private val PICK_IMAGE_REQUEST = 71
     var filePath: Uri? = null
     var firebaseStore: FirebaseStorage? = null
     var storageReference: StorageReference? = null
@@ -37,29 +36,25 @@ class AddPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_post)
         add_image_button = findViewById(R.id.add_image_button)
-        //submit_post_button = findViewById(R.id.submit_post_button)
         imagePreview = findViewById(R.id.image_preview) // Pour la preview de l'image selectionnée
 
         firebaseStore = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
 
         add_image_button.setOnClickListener { launchGallery() }
-        //submit_post_button.setOnClickListener { uploadImage() }
-
-
-
 
         val db = Firebase.firestore
         val uid = Firebase.auth.currentUser?.uid
 
         val submitButton: Button = findViewById(R.id.submit_post_button)
         submitButton.setOnClickListener {
-            uploadImage() // Appel de la fonction pour upload l'image sur Firebase Storage
+            val imageId = uploadImage() // Appel de la fonction pour upload l'image sur Firebase Storage
             val content = findViewById<android.widget.EditText>(R.id.new_post_input).text.toString()
             val post = hashMapOf(
                 "content" to content,
                 "uid" to uid,
                 "likes" to 0,
+                "imageUri" to imageId,
                 "date" to FieldValue.serverTimestamp()
             )
             db.collection("posts")
@@ -77,8 +72,6 @@ class AddPostActivity : AppCompatActivity() {
         }
 
     }
-
-
 
     private fun launchGallery() {
         val intent = Intent()
@@ -106,12 +99,16 @@ class AddPostActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImage() {
-        if (filePath != null) {
-            val ref = storageReference?.child("myImages/" + UUID.randomUUID().toString())
-            val uploadTask = ref?.putFile(filePath!!)
-
+    private fun uploadImage(): String {
+        return if (filePath != null) {
+            val imageId = UUID.randomUUID().toString()
+            val ref = storageReference?.child("myImages/$imageId")
+            ref?.putFile(filePath!!)
+            imageId
         } else {
             Toast.makeText(this, "Please Upload an Image", Toast.LENGTH_SHORT).show()
-        }    }
+            ""
+        }
+    }
+
 }

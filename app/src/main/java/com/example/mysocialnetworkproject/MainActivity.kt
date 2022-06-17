@@ -10,15 +10,23 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -33,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddPostActivity::class.java)
             startActivity(intent)
         }
+
+        var auth = Firebase.auth
+        var token = auth.getAccessToken(true)
 
         // Instantiating Firebase
         val db = Firebase.firestore
@@ -79,6 +90,15 @@ class MainActivity : AppCompatActivity() {
                                 postContent.justificationMode = JUSTIFICATION_MODE_INTER_WORD
                             }
                         }
+                        val image = ImageView(this)
+                        // Get image from post attributes
+                        image.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+                        val storage = FirebaseStorage.getInstance()
+                        val storageReference = (document.getString("imageUri"))
+                        //image.text = storageReference
+                        /*Glide.with(this)
+                            .load(url)
+                            .into(image)*/
                         val like = Button(this)
                         like.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
                         like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like, 0, 0, 0)
@@ -106,6 +126,8 @@ class MainActivity : AppCompatActivity() {
                         post.addView(postAuthor)
                         // Add Content TextView to LinearLayout
                         post.addView(postContent)
+                        // Add ImageView to LinearLayout
+                        post.addView(image)
                         // Add Like button to post
                         post.addView(like)
                     // Add LinearLayout to ScrollView
@@ -139,5 +161,7 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })*/
+
+
     }
 }
