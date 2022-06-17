@@ -4,15 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/drawable-anydpi/ic_add_light.xml" value="0.3315" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/drawable-anydpi/like.xml" value="0.2095" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/drawable-anydpi/person.xml" value="0.2095" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.332" />
         <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout-v26/activity_add_post.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_add_post.xml" value="0.27943840579710144" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_login.xml" value="0.2798913043478261" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_main.xml" value="0.2798913043478261" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_user_feed.xml" value="0.2798913043478261" />
+        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Gabriel/Workspace/Mobile apps/MySocialNetwork/app/src/main/res/layout/activity_register.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_add_post.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_firebase_storage_manager.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_image_storage.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_login.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_main.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_register.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/alexa/Documents/ECAM/Master/Q2/Mobile development/MySocialNetwork/app/src/main/res/layout/activity_user_feed.xml" value="0.2391304347826087" />
       </map>
     </option>
   </component>
