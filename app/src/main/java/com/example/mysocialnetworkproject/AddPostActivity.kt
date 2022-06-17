@@ -32,6 +32,7 @@ class AddPostActivity : AppCompatActivity() {
             val post = hashMapOf(
                 "content" to content,
                 "uid" to uid,
+                "likes" to 0,
                 "date" to FieldValue.serverTimestamp()
             )
             db.collection("posts")
