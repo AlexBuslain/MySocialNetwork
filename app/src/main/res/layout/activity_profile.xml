@@ -8,83 +8,59 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageView
-            android:id="@+id/profile_pic"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ScrollViewCount">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:src="@drawable/profile_pic"
-            tools:ignore="MissingConstraints" />
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="172dp"
-            android:contentDescription="Caffeine"
-            android:src="@drawable/profile_avatar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/profile_pic"
-            tools:ignore="MissingConstraints" />
+                <ImageView
+                    android:id="@+id/cover_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-35dp"
+                    android:contentDescription="@string/cover_picture_description"
+                    android:src="@drawable/profile_pic" />
 
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="304dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="60dp"
-            android:background="#00000000"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:textColorHint="#808080"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/profile_pic"
-            tools:layout_editor_absoluteX="53dp"
-            tools:ignore="MissingConstraints" />
+                <ImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="100dp"
+                    android:contentDescription="Caffeine"
+                    android:src="@drawable/profile_avatar"
+                    tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/subscribe_button"
-        android:layout_width="224dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="188dp"
-        android:text="Subscribe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_name"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        tools:ignore="MissingConstraints" />
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="250dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="25sp"
+                    tools:text="John Doe" />
 
-    <LinearLayout
-        android:layout_width="415dp"
-        android:layout_height="272dp"
-        android:layout_marginTop="50dp"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/subscribe_button"
-        app:layout_constraintVertical_bias="1.0">
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subscribe_button"
-            tools:ignore="SpeakableTextPresentCheck">
+                <Button
+                    android:id="@+id/subscribe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="300dp"
+                    android:text="Follow" />
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/post_iterator"
@@ -94,8 +70,8 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="10dp"
                 android:paddingBottom="10dp" />
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

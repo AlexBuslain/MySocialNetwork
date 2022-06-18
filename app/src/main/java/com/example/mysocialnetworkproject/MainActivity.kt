@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddPostActivity::class.java)
             startActivity(intent)
         }
+        val searchButton = findViewById<FloatingActionButton>(R.id.search_button)
+        searchButton.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         // Instantiating Firebase
         val db = Firebase.firestore
@@ -70,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             .addOnFailureListener { exception ->
-                                Log.w("TAG", "Error getting user's name and lastname: ", exception)
+                                Log.e("TAG", "Error getting user's name and lastname: ", exception)
                             }
                         postAuthor.setTextColor(Color.BLACK)
                         // TextView to display post content
@@ -128,24 +133,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w("TAG","Error getting posts: $exception")
+                Log.e("TAG","Error getting posts: $exception")
             }
-
-        // Search view
-        val searchView = findViewById<android.widget.SearchView>(R.id.search_view)
-        searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    intent = Intent(this@MainActivity, SearchResultsActivity::class.java)
-                    intent.putExtra("query", query)
-                    startActivity(intent)
-                }
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
 
         @Override
         fun onResume() {

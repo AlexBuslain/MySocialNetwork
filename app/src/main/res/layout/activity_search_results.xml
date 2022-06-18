@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchResultsActivity">
+    tools:context=".SearchActivity">
     <LinearLayout
         android:id="@+id/lyt"
         android:layout_width="match_parent"
@@ -21,10 +21,14 @@
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_users" />
-        <ListView
-            android:id="@+id/user_list"
+        <LinearLayout
+            android:id="@+id/search_results_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp">
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -24,4 +24,5 @@
     <string name="lastname">Last name</string>
     <string name="search_users">Search users</string>
     <string name="profile">Profile</string>
+    <string name="cover_picture_description">Cover picture</string>
 </resources>

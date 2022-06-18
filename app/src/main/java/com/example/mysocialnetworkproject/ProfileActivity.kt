@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.text.LineBreaker
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
@@ -12,24 +11,21 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
 class ProfileActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("WrongViewCast", "SetTextI18n", "UseCompatLoadingForDrawables")
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // Variables pour récupérer l'ID de l'utilisateur
+        // Getting the user's uid from the intent
         val bundle: Bundle? = intent.extras
-        val userId = bundle?.getString("userId")
-
+        val userId = bundle?.getString("uid")
 
         // Instantiating Firebase
         val db = Firebase.firestore
@@ -41,8 +37,25 @@ class ProfileActivity : AppCompatActivity() {
         val postCollection = db.collection("posts")
         val usersCollection = db.collection("users")
 
+        val userNameText = findViewById<TextView>(R.id.profile_name)
+
+
+        usersCollection.whereEqualTo("uid", userId).get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    // Getting the user's name
+                    userNameText.text = document.getString("firstname") + " " + document.getString("lastname")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("Error", "Error getting documents: ", exception)
+            }
+
         // Query to get all posts
-        postCollection.orderBy("date", Query.Direction.DESCENDING).get()
+        postCollection
+            .whereEqualTo("uid", userId)
+            //.orderBy("timestamp", Query.Direction.DESCENDING)
+            .get()
             .addOnSuccessListener { result ->
                 // For each post, get the user and content
                 for (document in result) {
@@ -63,7 +76,7 @@ class ProfileActivity : AppCompatActivity() {
                             }
                         }
                         .addOnFailureListener { exception ->
-                            Log.w("TAG", "Error getting user's name and lastname: ", exception)
+                            Log.e("TAG", "Error getting user's name and lastname: ", exception)
                         }
                     postAuthor.setTextColor(Color.BLACK)
                     // TextView to display post content
@@ -128,7 +141,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w("TAG","Error getting posts: $exception")
+                Log.e("TAG","Error getting posts: $exception")
             }
 
     }

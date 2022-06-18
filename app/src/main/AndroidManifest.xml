@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySocialNetworkProject">
         <activity
-            android:name=".SearchResultsActivity"
+            android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".UserFeedActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".AddPostActivity"
